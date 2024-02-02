@@ -1,8 +1,9 @@
-import { Text, View, StyleSheet} from 'react-native';
+import { Text, View, StyleSheet, FlatList} from 'react-native';
 import Constants from 'expo-constants';
 
 import colors from './app/config/colors';
 import ListItem from './app/components/ListItem';
+import ListItemSeperator from './app/components/ListItemSeperator';
 export default function App() {
 
 // this is the array we will use for the example on FlatLists
@@ -41,6 +42,20 @@ export default function App() {
      <ListItem name = "Ziyan" age = "666666666>:)" favActivity="Playing Ping Pong"/>
      {/* Next we will add one ListItem component to ensure the code is how we want*/}
      {/* Replace that code with a FlatList that has the array of friends as its data*/}
+     <FlatList
+      data={friends}
+      keyExctractor= {friend => friend.id.toString()}
+      renderItem={({item}) => (
+          <ListItem
+            name={item.name}
+            age={item.age}
+            favActivity={item.favActivity}
+            onPress={() => console.log(item)}
+          />
+      )}
+      ItemSeparatorComponent={() => <ListItemSeperator color = 'red'/>}
+     />
+
      {/* Create a ListItemSeparator component that can go between ListItems */}
 
      {/* Begin to interact with our FlatList (more to come!) */}

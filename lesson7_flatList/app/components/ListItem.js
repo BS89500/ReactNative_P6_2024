@@ -3,12 +3,14 @@ import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import Constants from 'expo-constants';
 import colors from '../config/colors';
 
-function ListItem({name, age, favActivity}) {
+function ListItem({name, age, favActivity, onPress}) {
   return(
-    <View style = {styles.itemRowContainer}>
-    <Text style = {styles.rowText}>{name}, {age}, {favActivity}</Text>
-    <Text style = {{color: colors.secondary}}>Crocheting</Text>
-   </View>
+    <TouchableOpacity onPress={onPress}>
+      <View style = {styles.itemRowContainer}>
+        <Text style = {styles.rowText}>{name}, {age}</Text>
+        <Text style = {{color: colors.secondary}}>{favActivity}</Text>
+    </View>
+    </TouchableOpacity>
   );
 }
 
